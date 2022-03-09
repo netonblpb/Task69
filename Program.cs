@@ -1,10 +1,11 @@
 ﻿// Задайте значения M и N. Напишите программу, которая найдёт сумму элементов в промежутке от M до N.
 
 Console.Write("Задайте N:");
-int N = int.Parse(Console.ReadLine());
+int First = int.Parse(Console.ReadLine());
 Console.Write("Задайте M:");
-int M = int.Parse(Console.ReadLine());
-int res = 0;
+int Second = int.Parse(Console.ReadLine());
+
+/* Решение без рекурсии!
 
 if (N > M)
 {
@@ -29,20 +30,14 @@ else if (N == M)
         res = M;
         Console.WriteLine($"Сумма: {res}");
 }
+*/
 
-
-/*int SummaNM(int a, int b, int res)
+int SummaNM(int a, int b)
 {     
         if (a == b) return b;
-        return b + SummaNM(a - 1);
+        return a + SummaNM (a + 1, b);
 }
 
-int SummaMN(int a, int b, int res)    
-{
-        if (b == a) return a;
-        return a + SummaMN(b - 1);    
-}
-
-if (N > M) Console.WriteLine(SummaNM(N, M, res));
-else if (M > N) Console.WriteLine(SummaMN(N, M, res));
-else if (N == M) Console.WriteLine(M);*/
+if (First < Second) Console.WriteLine(SummaNM(First, Second));
+else if (First > Second) Console.WriteLine(SummaNM(Second, First));
+else if (First == Second) Console.WriteLine(Second + First);
